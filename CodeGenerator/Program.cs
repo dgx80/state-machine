@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CodeGenerator.Builder;
 
-namespace ConStateMachineTest
+namespace CodeGenerator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            DGX.Action.StateMachine m = new DGX.Action.StateMachine();
-            test1();
-        }
-
-        static void test1()
-        {
-
+            string outputPath = args[0];
+            ActionBuilder builder = new ActionBuilder();
+            builder.createAction(outputPath);
         }
     }
 }

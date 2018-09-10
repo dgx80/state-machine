@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using DGX.Action;
+
+namespace %namepsace_name%
+{
+    public class %class_name%: ActionBase
+    {
+        public ActionTemplate(int id)
+            : base(id, %is_once%)
+        {
+
+        }
+
+        protected override void handleInit()
+        {
+            base.handleInit();
+        }
+
+        protected override void handleRun()
+        {
+            base.handleRun();
+        }
+
+        protected override void handleEnding()
+        {
+            base.handleEnding();
+        }
+    }
+}
