@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\BonjourAction.cs" />
+    <Compile Include="Action\DirectionChoiceAction.cs" />
+    <Compile Include="Action\LeftAction.cs" />
+    <Compile Include="Action\RightAction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateMachineTest1.cs" />
@@ -56,5 +60,6 @@
       <Name>StateMachine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

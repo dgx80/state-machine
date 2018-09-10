@@ -26,8 +26,7 @@ namespace CodeGenerator.Builder
 
             actionName = actionName.Substring(0, 1).ToUpper() + actionName.Substring(1);
             string className = actionName + "Action";
-            fileTemplate = new ClassTemplate("Action.txt", outputPath);
-            fileTemplate.read();
+            fileTemplate = new ClassTemplate(Properties.Resources.Action, outputPath);
             fileTemplate.replace("%namepsace_name%", namespaceName);
             fileTemplate.replace("%class_name%", className);
             fileTemplate.replace("%is_once%", isOnce.ToString().ToLower());

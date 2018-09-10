@@ -9,30 +9,18 @@ namespace CodeGenerator.Template
 {
     class ClassTemplate
     {
-        private string basePath;
         private string content;
-        private string path;
         private string outputPath;
 
-        public ClassTemplate(string aPath, string aOutputPath)
+        public ClassTemplate(string aContent, string aOutputPath)
         {
-            path = aPath;
-            basePath = AppDomain.CurrentDomain.BaseDirectory;
+            content = aContent;
             outputPath = aOutputPath;
         }
 
         public void replace(string old, string newstr)
         {
             content = content.Replace(old, newstr);
-        }
-
-        public void read()
-        {
-            string filename = basePath + @"\Template\" + path;
-            Console.WriteLine("Read class template from " + filename);
-            StreamReader sr = new StreamReader(filename);
-            content = sr.ReadToEnd();
-            sr.Close();
         }
 
         public void write(string filename)

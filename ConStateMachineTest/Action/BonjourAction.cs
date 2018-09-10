@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using DGX.Action;
 
-namespace %namepsace_name%
+namespace ConStateMachineTest.Action
 {
-    public class %class_name%: ActionBase
+    public class BonjourAction: ActionBase
     {
-        public %class_name%(int id)
-            : base(id, %is_once%)
+        public BonjourAction(int id)
+            : base(id, true)
         {
 
         }

@@ -11,7 +11,8 @@ namespace CodeGenerator
     {
         static void Main(string[] args)
         {
-            string outputPath = args[0];
+            //get current directory of execution like command `pwd`
+            string outputPath = Environment.CurrentDirectory;
             ActionBuilder builder = new ActionBuilder();
             builder.createAction(outputPath);
         }
