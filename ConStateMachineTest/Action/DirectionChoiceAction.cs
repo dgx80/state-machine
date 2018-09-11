@@ -7,6 +7,12 @@ namespace ConStateMachineTest.Action
 {
     public class DirectionChoiceAction: ActionBase
     {
+        public enum DIRECTION
+        {
+            right,
+            left
+        };
+
         public DirectionChoiceAction(int id)
             : base(id, true)
         {
@@ -21,6 +27,20 @@ namespace ConStateMachineTest.Action
         protected override void handleRun()
         {
             base.handleRun();
+            Console.WriteLine("left or right?");
+            string s = Console.ReadLine();
+            if (s == "right")
+            {
+                setTrigger((int)DIRECTION.right);
+            }
+            else if (s == "left")
+            {
+                setTrigger((int)DIRECTION.left);
+            }
+            else
+            {
+                Console.WriteLine("Mauvaise entré");
+            }
         }
 
         protected override void handleEnding()

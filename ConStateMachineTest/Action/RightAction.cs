@@ -21,6 +21,7 @@ namespace ConStateMachineTest.Action
         protected override void handleRun()
         {
             base.handleRun();
+            Console.WriteLine("Vous avez tournez a droite");
         }
 
         protected override void handleEnding()

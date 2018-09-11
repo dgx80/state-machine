@@ -34,6 +34,7 @@ namespace DGX.Action
         private Dictionary<int,int> mTriggers = new Dictionary<int, int>();
         private bool mIsTrigerred;
         private int mCurrentTriggerState;
+        private ActionBase mDefaultNextAction = null;
 
         #endregion
 
@@ -117,10 +118,28 @@ namespace DGX.Action
             mIsTrigerred = true;
             mCurrentTriggerState = triggerState;
         }
+
+        public ActionBase DEFAULT_NEXT_ACTION
+        {
+            set
+            {
+                mDefaultNextAction = value;
+            }
+            get
+            {
+                return mDefaultNextAction;
+            }
+        }
+
+        public bool IS_DEFAULT_NEXT_VALUE
+        {
+            get { return mDefaultNextAction != null; }
+        }
+
         #endregion
 
         #region PROPERTIES
-        
+
         public int ID
         {
             get 
@@ -164,7 +183,10 @@ namespace DGX.Action
         }
         public bool IS_STOPPED
         {
-            get { return mActionState == eActionState.stopped;}
+            get
+            {
+                return mActionState == eActionState.stopped;
+            }
         }
 
         #endregion

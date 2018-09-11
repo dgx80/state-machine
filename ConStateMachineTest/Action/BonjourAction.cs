@@ -21,6 +21,7 @@ namespace ConStateMachineTest.Action
         protected override void handleRun()
         {
             base.handleRun();
+            Console.WriteLine("Bonjour!");
         }
 
         protected override void handleEnding()

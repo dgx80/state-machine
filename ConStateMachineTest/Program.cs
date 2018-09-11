@@ -9,14 +9,18 @@ namespace ConStateMachineTest
     class Program
     {
         static void Main(string[] args)
-        {
-            DGX.Action.StateMachine m = new DGX.Action.StateMachine();
+        {   
             test1();
         }
 
         static void test1()
         {
-
+            Machine.StateMachineTest1 m = new Machine.StateMachineTest1();
+            
+            while (true)
+            {
+                m.handleUpdate();
+            }
         }
     }
 }

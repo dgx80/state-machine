@@ -64,16 +64,27 @@ namespace DGX.Action
                 bGotoNextAction = true;
             }
             if (bGotoNextAction) {
-                if (mIsChangeAction) {
+                if (mIsChangeAction)
+                {
                     mIsChangeAction = false;
-                    mCurrentAction = mActions [mNextActionId];
+                    mCurrentAction = mActions[mNextActionId];
                     mCurrentAction.Start();
                     mIsNewStateStarted = true;
-                } else if (mDefaultAction != null){
+                }
+                else if (mCurrentAction.IS_DEFAULT_NEXT_VALUE)
+                {
+                    mCurrentAction = mCurrentAction.DEFAULT_NEXT_ACTION;
+                    mCurrentAction.Start();
+                    mIsNewStateStarted = true;
+                }
+                else if (mDefaultAction != null)
+                {
                     mCurrentAction = mDefaultAction;
                     mCurrentAction.Start();
                     mIsNewStateStarted = true;
-                } else {
+                }
+                else
+                {
                     mCurrentAction = null;
                 }
             }
@@ -123,7 +134,10 @@ namespace DGX.Action
         protected ActionBase ACTION_DEFAULT
         {
             get{ return mDefaultAction;}
-            set{ mDefaultAction = value;}    
+            set
+            {
+                mDefaultAction = value;
+            }
         }
         public override string OWNER
         {
