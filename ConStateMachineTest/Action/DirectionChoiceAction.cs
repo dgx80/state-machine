@@ -2,17 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DGX.Action;
+using ConStateMachineTest.Machine;
 
 namespace ConStateMachineTest.Action
 {
     public class DirectionChoiceAction: ActionBase
     {
-        public enum DIRECTION
-        {
-            right,
-            left
-        };
-
         public DirectionChoiceAction(int id)
             : base(id, true)
         {
@@ -31,11 +26,11 @@ namespace ConStateMachineTest.Action
             string s = Console.ReadLine();
             if (s == "right")
             {
-                setTrigger((int)DIRECTION.right);
+                setTrigger((int)StateMachineTest1.ACTION.right);
             }
             else if (s == "left")
             {
-                setTrigger((int)DIRECTION.left);
+                setTrigger((int)StateMachineTest1.ACTION.left);
             }
             else
             {

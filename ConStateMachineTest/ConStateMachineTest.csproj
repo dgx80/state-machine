@@ -56,10 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StateMachine\StateMachine.csproj">
-      <Project>{68f91a32-2785-422b-b2f4-c8a65a21c2b2}</Project>
+      <Project>{d8d24415-b070-45e4-a68a-ca10b9e8d64d}</Project>
       <Name>StateMachine</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

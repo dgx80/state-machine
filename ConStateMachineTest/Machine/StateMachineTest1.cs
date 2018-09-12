@@ -7,21 +7,28 @@ using ConStateMachineTest.Action;
 
 namespace ConStateMachineTest.Machine
 {
-    class StateMachineTest1: DGX.Action.StateMachine
+    public class StateMachineTest1: DGX.Action.StateMachine
     {
+        public enum ACTION
+        {
+            bonjour,
+            choices,
+            left,
+            right
+        }
         public StateMachineTest1()
             :base()
         {
-            BonjourAction bonjourAction = new BonjourAction(0);
-            DirectionChoiceAction choices = new DirectionChoiceAction(1);
-            LeftAction la = new LeftAction(2);
-            RightAction ra = new RightAction(3);
+            BonjourAction bonjourAction = new BonjourAction((int)ACTION.bonjour);
+            DirectionChoiceAction choices = new DirectionChoiceAction((int)ACTION.choices);
+            LeftAction la = new LeftAction((int)ACTION.left);
+            RightAction ra = new RightAction((int)ACTION.right);
 
             //trigger
             bonjourAction.DEFAULT_NEXT_ACTION = choices;
-            choices.addTrigger((int)DirectionChoiceAction.DIRECTION.left, la);
-            choices.addTrigger((int)DirectionChoiceAction.DIRECTION.right, ra);
-            
+            addTrigger(choices, ra);
+            addTrigger(choices, la);
+
             //action.addTrigger
             addAction(bonjourAction);
             addAction(choices);

@@ -40,7 +40,6 @@ namespace DGX.Action
         #region UPDATE
         public virtual void handleUpdate()
         {
-            bool mustUpdateYet = false;
             bool bAction = mCurrentAction != null;
             mIsNewStateStarted = false;
 
@@ -164,8 +163,13 @@ namespace DGX.Action
         {
             get { return mIsNewStateStarted; }
         }
-             
+
         #endregion
+
+        protected void addTrigger(ActionBase parent, ActionBase target)
+        {
+            parent.addTrigger((int)target.ID, target);
+        }
     }
 }
 
