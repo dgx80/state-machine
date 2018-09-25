@@ -19,7 +19,7 @@ namespace ConStateMachineTest
             
             while (true)
             {
-                m.handleUpdate();
+                m.HandleUpdate();
             }
         }
     }

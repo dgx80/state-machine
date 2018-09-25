@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace DGX.Action
 {
-    public class StateMachine : ObjectBase
+    public class StateMachine : ObjectBase, IStateMachine
     {
         #region ATTRIBUTES
         
@@ -38,7 +38,7 @@ namespace DGX.Action
 
         #endregion
         #region UPDATE
-        public virtual void handleUpdate()
+        public virtual void HandleUpdate()
         {
             bool bAction = mCurrentAction != null;
             mIsNewStateStarted = false;
@@ -101,6 +101,11 @@ namespace DGX.Action
             return action;
         }
 
+        protected bool startNewAction(ActionBase a)
+        {
+            startNewAction((int)a.ID, false);
+            return true;
+        }
         /// <summary>
         /// Starts the new action.
         /// </summary>

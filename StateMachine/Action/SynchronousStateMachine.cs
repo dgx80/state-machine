@@ -42,13 +42,13 @@ namespace DGX.Action
         {
         }
         
-        public override void handleUpdate()
+        public override void HandleUpdate()
         {
-            base.handleUpdate();
+            base.HandleUpdate();
             
             if (IS_NEW_STATE_STARTED) {
                 //dans ce cas nous avons d/marer une nouvelle action mais le init n'a pas été appelé
-                handleUpdate();
+                HandleUpdate();
             }
         }
     }

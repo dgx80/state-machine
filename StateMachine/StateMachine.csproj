@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
+    <Compile Include="Action\IStateMachine.cs" />
     <Compile Include="Action\StateMachine.cs" />
     <Compile Include="Action\SynchronousStateMachine.cs" />
     <Compile Include="Logger.cs" />
