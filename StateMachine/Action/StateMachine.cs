@@ -75,12 +75,14 @@ namespace DGX.Action
                     mCurrentAction = mCurrentAction.DEFAULT_NEXT_ACTION;
                     mCurrentAction.Start();
                     mIsNewStateStarted = true;
+                    onNewAction(mCurrentAction.ID);
                 }
                 else if (mDefaultAction != null)
                 {
                     mCurrentAction = mDefaultAction;
                     mCurrentAction.Start();
                     mIsNewStateStarted = true;
+                    onNewAction(mCurrentAction.ID);
                 }
                 else
                 {
@@ -119,9 +121,15 @@ namespace DGX.Action
                 }
                 mIsChangeAction = true;
                 mNextActionId = id;
+                onNewAction(id);
                 return true;
             }
             return false;
+        }
+
+        public virtual void onNewAction(int id)
+        {
+            //do nothing;
         }
 
         public void setIsDebug(bool b)
