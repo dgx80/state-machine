@@ -31,7 +31,7 @@ namespace DGX.Action
         private eActionState mActionState = eActionState.stopped;
         private int mId;
         private bool mIsOnce = false;
-        private Dictionary<int,int> mTriggers = new Dictionary<int, int>();
+        private Dictionary<int,ActionBase> mTriggers = new Dictionary<int, ActionBase>();
         private bool mIsTrigerred;
         private int mCurrentTriggerState;
         private ActionBase mDefaultNextAction = null;
@@ -66,6 +66,12 @@ namespace DGX.Action
         {
             STATE = eActionState.stopped;
         }
+
+        /// <summary>
+        /// message propagation from state machine
+        /// </summary>
+        /// <param name="message"></param>
+        public virtual void OnMessage(string message){ }
 
         #endregion
 
@@ -111,12 +117,17 @@ namespace DGX.Action
         }
         public void addTrigger(int state, ActionBase action)
         {
-            mTriggers.Add((int)state, action.ID);
+            mTriggers.Add((int)state, action);
         }
         protected void setTrigger(int triggerState)
         {
+            if (!mTriggers.ContainsKey(triggerState))
+            {
+                return;
+            }
             mIsTrigerred = true;
             mCurrentTriggerState = triggerState;
+            mTriggers[triggerState].OnTriggered();
         }
 
         public ActionBase DEFAULT_NEXT_ACTION
@@ -135,6 +146,8 @@ namespace DGX.Action
         {
             get { return mDefaultNextAction != null; }
         }
+
+        public virtual void OnTriggered() { }
 
         #endregion
 
@@ -160,7 +173,7 @@ namespace DGX.Action
             {
                 int actionId = 0;
                 if (mTriggers.ContainsKey(mCurrentTriggerState)) {
-                    actionId = mTriggers[mCurrentTriggerState];
+                    actionId = mTriggers[mCurrentTriggerState].ID;
                 }
                 return actionId;
             }

@@ -36,7 +36,17 @@ namespace DGX.Action
 
         #region EVENTS
 
+        public virtual void OnMessage(string message)
+        {
+            if (mCurrentAction == null)
+            {
+                return;
+            }
+            mCurrentAction.OnMessage(message);
+        }
+        
         #endregion
+        
         #region UPDATE
         public virtual void HandleUpdate()
         {
@@ -75,14 +85,14 @@ namespace DGX.Action
                     mCurrentAction = mCurrentAction.DEFAULT_NEXT_ACTION;
                     mCurrentAction.Start();
                     mIsNewStateStarted = true;
-                    onNewAction(mCurrentAction.ID);
+                    OnNewAction(mCurrentAction.ID);
                 }
                 else if (mDefaultAction != null)
                 {
                     mCurrentAction = mDefaultAction;
                     mCurrentAction.Start();
                     mIsNewStateStarted = true;
-                    onNewAction(mCurrentAction.ID);
+                    OnNewAction(mCurrentAction.ID);
                 }
                 else
                 {
@@ -92,6 +102,7 @@ namespace DGX.Action
         }
         
         #endregion
+        
         #region ACTIONS
 
         protected ActionBase addAction(ActionBase action)
@@ -108,6 +119,7 @@ namespace DGX.Action
             startNewAction((int)a.ID, false);
             return true;
         }
+
         /// <summary>
         /// Starts the new action.
         /// </summary>
@@ -121,16 +133,13 @@ namespace DGX.Action
                 }
                 mIsChangeAction = true;
                 mNextActionId = id;
-                onNewAction(id);
+                OnNewAction(id);
                 return true;
             }
             return false;
         }
 
-        public virtual void onNewAction(int id)
-        {
-            //do nothing;
-        }
+        public virtual void OnNewAction(int id) {}
 
         public void setIsDebug(bool b)
         {
@@ -141,6 +150,7 @@ namespace DGX.Action
             }
         }
         #endregion
+        
         #region PROPERTIES
 
         protected ActionBase ACTION_DEFAULT
@@ -172,6 +182,12 @@ namespace DGX.Action
                 return -1;
             }
         }
+
+        public ActionBase CurrentAction
+        {
+            get { return mCurrentAction; }
+        }
+
         protected bool IS_NEW_STATE_STARTED
         {
             get { return mIsNewStateStarted; }
